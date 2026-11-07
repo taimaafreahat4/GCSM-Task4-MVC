@@ -1,0 +1,153 @@
+﻿@model List<Offer>
+
+@{
+    ViewData["Title"] = "Create Supply Request";
+}
+
+<h1>Graduation Supply Management</h1>
+
+<h2>Create Supply Request</h2>
+
+<p>Select one offer from each category.</p>
+
+@if (TempData["Message"] != null)
+{
+    <p class="text-danger">@TempData["Message"]</p>
+}
+
+<h3>Graduation Certificates</h3>
+
+<table class="table table-bordered">
+    <tr>
+        <th>Supplier</th>
+        <th>Offer Name</th>
+        <th>Quantity</th>
+        <th>Unit Price</th>
+        <th>Action</th>
+    </tr>
+
+    @foreach (var offer in Model)
+    {
+        if (offer.Category == "Graduation Certificates")
+        {
+            <tr>
+                <td>@offer.SupplierName</td>
+                <td>@offer.OfferName</td>
+                <td>@offer.Quantity</td>
+                <td>@offer.UnitPrice JD</td>
+                <td>
+                    <form method="post"
+                          action="@Url.Action("SelectOffer", "SupplyRequest")">
+
+                        @Html.AntiForgeryToken()
+
+                        <input type="hidden"
+                               name="offerId"
+                               value="@offer.Id" />
+
+                        <input type="hidden"
+                               name="category"
+                               value="@offer.Category" />
+
+                        <button type="submit" class="btn btn-primary">
+                            Select
+                        </button>
+                    </form>
+                </td>
+            </tr>
+        }
+    }
+</table>
+
+<h3>Hospitality</h3>
+
+<table class="table table-bordered">
+    <tr>
+        <th>Supplier</th>
+        <th>Offer Name</th>
+        <th>Quantity</th>
+        <th>Unit Price</th>
+        <th>Action</th>
+    </tr>
+
+    @foreach (var offer in Model)
+    {
+        if (offer.Category == "Hospitality")
+        {
+            <tr>
+                <td>@offer.SupplierName</td>
+                <td>@offer.OfferName</td>
+                <td>@offer.Quantity</td>
+                <td>@offer.UnitPrice JD</td>
+                <td>
+                    <form method="post"
+                          action="@Url.Action("SelectOffer", "SupplyRequest")">
+
+                        @Html.AntiForgeryToken()
+
+                        <input type="hidden"
+                               name="offerId"
+                               value="@offer.Id" />
+
+                        <input type="hidden"
+                               name="category"
+                               value="@offer.Category" />
+
+                        <button type="submit" class="btn btn-primary">
+                            Select
+                        </button>
+                    </form>
+                </td>
+            </tr>
+        }
+    }
+</table>
+
+<h3>Graduation Gifts</h3>
+
+<table class="table table-bordered">
+    <tr>
+        <th>Supplier</th>
+        <th>Offer Name</th>
+        <th>Quantity</th>
+        <th>Unit Price</th>
+        <th>Action</th>
+    </tr>
+
+    @foreach (var offer in Model)
+    {
+        if (offer.Category == "Graduation Gifts")
+        {
+            <tr>
+                <td>@offer.SupplierName</td>
+                <td>@offer.OfferName</td>
+                <td>@offer.Quantity</td>
+                <td>@offer.UnitPrice JD</td>
+                <td>
+                    <form method="post"
+                          action="@Url.Action("SelectOffer", "SupplyRequest")">
+
+                        @Html.AntiForgeryToken()
+
+                        <input type="hidden"
+                               name="offerId"
+                               value="@offer.Id" />
+
+                        <input type="hidden"
+                               name="category"
+                               value="@offer.Category" />
+
+                        <button type="submit" class="btn btn-primary">
+                            Select
+                        </button>
+                    </form>
+                </td>
+            </tr>
+        }
+    }
+</table>
+
+<a href="@Url.Action("Review", "SupplyRequest")"
+   class="btn btn-success">
+    Review Request
+</a>

@@ -1,0 +1,33 @@
+﻿@model List<Offer>
+@{
+    ViewData["Title"] = "Review Request";
+
+}
+<h1>Review Supply Request</h1>
+<table class="table table-bordered">
+    <tr>
+        <th>Supplier</th>
+        <th>Offer Name</th>
+        <th>Quantity</th>
+        <th>Unit Price</th>
+        <th>Total Price</th>
+    </tr>
+    @for (int i = 0; i < Model.Count; i++)
+    {
+        <tr>
+            <td>@Model[i].SupplierName</td>
+            <td>@Model[i].OfferName</td>
+            <td>@Model[i].Quantity</td>
+            <td>@Model[i].UnitPrice JD</td>
+            <td>@ViewBag.OfferTotals[i] JD</td>
+        </tr>
+    }
+</table>
+<h3>total price:@ViewBag.TotalPrice JD</h3>
+<h3>discount percentage:@ViewBag.DiscountPercentage %</h3>
+<h3>discount amount:@ViewBag.DiscountAmount JD</h3>
+<h2>Final Total:@ViewBag.FinalTotal JD</h2>
+<a href="@Url.Action("Index", "SupplyRequest")"
+   class="btn btn-primary">
+    Back to Offers
+</a>
